@@ -8,11 +8,31 @@
           </a>
         </li>
         <li class="nav-item">
+          {{-- if request is dashboard/posts 
+            then make it active 
+            else none (posts*=make it active on any file inside posts) --}}
           <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}" href="/dashboard/posts">
             <span data-feather="file-text"></span>
             My Posts
           </a>
         </li>
       </ul>
+
+      {{-- only admin can see --}}
+      @can('admin')
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        <span>Administrator</span>
+      </h6>
+
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}" href="/dashboard/categories">
+            <span data-feather="layers"></span>
+            Post Categories
+          </a>
+        </li>
+      </ul>
+      @endcan
+      
     </div>
   </nav>

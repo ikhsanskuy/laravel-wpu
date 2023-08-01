@@ -10,7 +10,18 @@
         @csrf
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
+        {{-- value="{{ old('title',$post->title) }} = get value on old title or get value from database --}}
         <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" required autofocus value="{{ old('title',$post->title) }}">
+        {{-- 
+        make error message :  
+        @error('title') is-invalid @enderror"
+        
+        how to call :
+         @error('title')
+        <div class="invalid-feedback">
+          {{ $message }}
+        </div>
+        @enderror--}}
         @error('title')
         <div class="invalid-feedback">
           {{ $message }}
